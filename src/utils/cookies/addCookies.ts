@@ -4,6 +4,6 @@ const addCookies =(data: string , expMinutes: number)=> {
     var time = now.getTime();
     var expireTime = time + 1*60*1000;
     now.setTime(expireTime);
-    document.cookie = `cookie=${data};expires=`+now.toUTCString()+';path=/;secure';
+    document.cookie = `cookie=${data};path=/;secure`;
   }
 export default addCookies

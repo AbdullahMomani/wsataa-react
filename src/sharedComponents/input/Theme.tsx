@@ -24,14 +24,6 @@ export const InputElement = styled.input<any>`
 export const Label = styled.label<any>`
   font-size: 18px;
   white-space: nowrap;
-  ${(props) =>
-    props.required &&
-    css`
-      &:after {
-        content: "*";
-        color: red;
-      }
-    `}
 `;
 export const InputElementContainer = styled.div<any>`
   width: 100%;

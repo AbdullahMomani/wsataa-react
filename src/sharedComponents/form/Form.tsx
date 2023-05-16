@@ -78,7 +78,7 @@ export const Form = ({
     defaultValues: defaultValues,
   });
   const smartFormData = Object.values(Object.values(formData)["0"]);
-  const omSubmitForm = (data: any) => {
+  const omSubmitForm = (data: any) => {    
     getResult && getResult(data);
   };
   const RenderForm = (formData: FormDetails, title: Title): JSX.Element => {
@@ -131,9 +131,7 @@ export const Form = ({
             })}
 
             <FormButtonContainer>
-              <Button text="Submit" disabled={!isValid}>
-                <span>+</span>
-              </Button>
+              <Button text="Submit" disabled={!isValid} / >
             </FormButtonContainer>
           </>
         </FormContainer>

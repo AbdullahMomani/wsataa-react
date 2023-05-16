@@ -1,17 +1,17 @@
-import { Main, Header, Footer } from "../components";
+import { Login , Dashboard } from "../pages"
 
 const routes = [
   {
     path: "/",
     exact: true,
-    component: Main,
+    component: Login,
     name: "Home",
   },
   {
-    path: "*",
-    exact: false,
-    component: Header,
-    name: "Not Found",
+    path: "/dashboard/:id",
+    exact: true,
+    component: Dashboard,
+    name: "Home",
   },
 ];
 const existingRoutes = ["/"];
