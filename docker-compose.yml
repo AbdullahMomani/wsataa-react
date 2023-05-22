@@ -1,0 +1,10 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: .
+    container_name: tamreeni
+    hostname: tamreeni
+    restart: always
+    ports:
+      - 8080:80
