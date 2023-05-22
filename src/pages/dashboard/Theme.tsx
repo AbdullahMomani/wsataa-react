@@ -13,7 +13,7 @@ export const Sider = styled(Drawer)`
   width: 250px;
   & .MuiPaper-root {
     width: 250px;
-    background-color: #c9f4aa;
+    background-color: #4BBF7A;
   }
   & .Mui-selected {
     background-color: #f5f5f5;
@@ -27,7 +27,11 @@ export const Content = styled.div`
 
 export const LogoContainer = styled.div`
   display: flex;
-  margin-bottom: 20px;
+  justify-content:center;
   align-items: center;
-  padding: 5px 10px;
+
+  img {
+    height: 70px;
+    width:80px;
+  }
 `;

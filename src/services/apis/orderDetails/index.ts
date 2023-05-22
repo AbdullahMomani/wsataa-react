@@ -1,0 +1,1 @@
+export {ordersOfferDetailsSlice , getOrdersOrOfferDetails} from './orderDeatils'

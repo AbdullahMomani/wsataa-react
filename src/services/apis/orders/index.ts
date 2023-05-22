@@ -1,0 +1,1 @@
+export {ordersSlice , activateOrder , getOrdersList} from './orders'

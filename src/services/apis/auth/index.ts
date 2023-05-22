@@ -1,6 +1,6 @@
 export {
     signIn,
     authSlice,
-    refreshToken,
-    refreshTokenSlice,
+    adminSlice,
+    signOut
 } from './auth';

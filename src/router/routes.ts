@@ -1,18 +1,24 @@
-import { Login , Dashboard } from "../pages"
+import { Login , Dashboard , Root} from "../pages"
 
 const routes = [
   {
     path: "/",
     exact: true,
+    component: Root,
+    name: "Home",
+  },
+  {
+    path: "/wsataa-dasboard",
+    exact: true,
     component: Login,
     name: "Home",
   },
   {
-    path: "/dashboard/:id",
+    path: "/wsataa-dasboard/dashboard/:id",
     exact: true,
     component: Dashboard,
     name: "Home",
   },
 ];
-const existingRoutes = ["/"];
+const existingRoutes = ["/wsataa-dasboard"];
 export { routes, existingRoutes };

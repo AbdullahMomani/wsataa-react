@@ -1,0 +1,1 @@
+export {offersSlice , activateOffer , getOffersList} from './offers'

@@ -1,7 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import localforage from "localforage";
-import { authAPI, itemsAPI } from "../services/apis";
+import { authAPI, usersAPI ,offersAPI,ordersAPI , orderOfferDetailsAPI , citiesAPI} from "../services/apis";
 
 const authPersistConfig = {
   key: "auth",
@@ -10,12 +10,17 @@ const authPersistConfig = {
 };
 const authPersistReducer = persistReducer(
   authPersistConfig,
-  authAPI.authSlice.reducer
+  authAPI.adminSlice.reducer
 );
 
 const reducers = combineReducers({
-  auth: authPersistReducer,
-  items: itemsAPI.itemsSlice.reducer,
+  admin: authPersistReducer,
+  auth: authAPI.authSlice.reducer,
+  users: usersAPI.usersSlice.reducer,
+  offers: offersAPI.offersSlice.reducer,
+  orders: ordersAPI.ordersSlice.reducer,
+  orderOfferDetails: orderOfferDetailsAPI.ordersOfferDetailsSlice.reducer,
+  cities: citiesAPI.citiesSlice.reducer,
 });
 
 export default reducers;

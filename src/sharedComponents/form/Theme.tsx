@@ -8,6 +8,12 @@ export const FormContainer = styled.form`
 export const Body = styled.div`
   width: 100%;
   box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 7px;
+  margin-bottom: 20px;
+  padding-right:10px;
+  box-shadow: 0px 6px 8px black;
+  background-color: white;
 `;
 export const FormRow = styled.div`
   display: flex;

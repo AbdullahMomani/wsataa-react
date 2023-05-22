@@ -1,1 +1,1 @@
-export {AllListItems} from './dashboard'
+export {AllListItems , ModalContent} from './dashboard'

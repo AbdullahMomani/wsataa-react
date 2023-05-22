@@ -60,6 +60,7 @@ interface FormInfo {
   title?: Title;
   defaultValues?: DefaultValues;
   className?: string;
+  autoComplete?:string
 }
 export const Form = ({
   formData,
@@ -67,6 +68,7 @@ export const Form = ({
   title,
   defaultValues,
   className,
+  autoComplete
 }: FormInfo) => {
   const {
     handleSubmit,
@@ -89,7 +91,7 @@ export const Form = ({
         ) : (
           title
         )}
-        <FormContainer onSubmit={handleSubmit(omSubmitForm)}>
+        <FormContainer autoComplete={autoComplete} onSubmit={handleSubmit(omSubmitForm)}>
           <>
             {smartFormData.map((formRow: any, rowKey: number) => {
               return (

@@ -7,7 +7,7 @@ export const Main = styled.main<any>`
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #E5FDD1;
+    background-color: #4BBF7A;
     ` 
     : 
     css`

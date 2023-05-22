@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { requestAsyncThunk, responseAsyncThunk } from "../../templates";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+
 
 interface tokens {
   data: {
@@ -27,14 +29,19 @@ const initialState = {
   status: 0,
   refreshCounter: false,
 } as UsersState;
-// const headers = {
-//     headers: {  MemberId: 5843 }
-// }
+
+export const signOut = createAsyncThunk(
+  "admin/signOut",
+  async (_, { dispatch }) => {
+    dispatch(adminSlice.actions.resetAction());
+  }
+);
+
 export const signIn = () => {
   return requestAsyncThunk({
     storeName: "auth",
-    _url: `api/users`,
-    method: "UPLOAD",
+    _url: `/api/v1/auth/admin/login`,
+    method: "POST",
     exact: "/sign-in",
   });
 };
@@ -58,21 +65,14 @@ export const authSlice = createSlice({
   extraReducers: responseAsyncThunk(signIn()),
 });
 
-export const refreshToken = () => {
-  return requestAsyncThunk({
-    storeName: "refreshToken",
-    _url: `/auth/refresh-token`,
-    method: "POST",
-  });
-};
 
-export const refreshTokenSlice = createSlice({
-  name: "refreshToken",
+export const adminSlice = createSlice({
+  name: "admin",
   initialState,
   reducers: {
-    resetAction: () => {
+    resetAction: () => {      
       return initialState;
     },
   },
-  extraReducers: responseAsyncThunk(refreshToken()),
+  extraReducers: responseAsyncThunk(signIn()),
 });

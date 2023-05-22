@@ -1,16 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { requestAsyncThunk, responseAsyncThunk } from '../../templates';
 
-interface tokens {
-    data: {
-        tokens: {
-            access: any;
-            refresh: any;
-        };
-    };
-}
+
 interface UsersState {
-    entities: tokens | any;
+    entities:  any;
     loading: 'idle' | 'pending' | 'succeeded' | 'failed';
     currentRequestId: number | undefined;
     error: any[] | undefined;
@@ -28,24 +21,33 @@ const initialState = {
     refreshCounter: false,
 } as UsersState;
 
-export const getItemsList = () => {
+export const getOffersList = () => {
     return requestAsyncThunk({
-        storeName: 'items',
-        _url: `api/users`,
+        storeName: 'offers',
+        _url: `api/v1/dashboard/offers`,
         method: 'GET',
-        exact : '/list-of-items'
+        exact : '/list-of-offers'
     });
 };
 
-export const itemsSlice = createSlice({
-    name: 'items',
+export const activateOffer = () => {
+    return requestAsyncThunk({
+        storeName: 'offers',
+        _url: `api/v1/dashboard/offers`,
+        method: 'PATCH',
+        exact : '/activate-offer'
+    });
+};
+
+export const offersSlice = createSlice({
+    name: 'offers',
     initialState,
     reducers: {
         resetAction: () => {
             return initialState;
         },
     },
-    extraReducers: responseAsyncThunk(getItemsList()),
+    extraReducers: responseAsyncThunk(getOffersList()),
 });
 
 

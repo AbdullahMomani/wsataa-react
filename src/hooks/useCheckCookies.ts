@@ -5,7 +5,7 @@ import addCookies from "../utils/cookies/addCookies";
 
 function useCheckCookies(token: string, time: number) {
   const dispatch = useDispatch<any>();
-  const signInInfo = useSelector((state: any) => state?.auth?.entities);
+  const signInInfo = useSelector((state: any) => state?.admin?.entities);
   useEffect(() => {
     let tokenTimeOut: any = undefined;
 
