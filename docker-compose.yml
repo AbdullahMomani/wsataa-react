@@ -1,10 +1,9 @@
 version: '3'
 services:
-  frontend:
+  app:
     build:
       context: .
-    container_name: tamreeni
-    hostname: tamreeni
-    restart: always
+      dockerfile: Dockerfile
     ports:
       - 8080:80
+    restart: always
