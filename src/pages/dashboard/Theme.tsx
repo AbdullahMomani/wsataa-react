@@ -18,6 +18,9 @@ export const Sider = styled(Drawer)`
   & .Mui-selected {
     background-color: #f5f5f5;
   }
+  & .MuiTypography-root{
+    color: white;
+  }
 `;
 
 export const Content = styled.div`
@@ -33,5 +36,15 @@ export const LogoContainer = styled.div`
   img {
     height: 70px;
     width:80px;
+  }
+`;
+
+export const WrapperForm = styled.div`
+  height: 500px;
+  display:flex;
+  align-items:center;
+  && div{
+    border: none;
+    box-shadow:none;
   }
 `;

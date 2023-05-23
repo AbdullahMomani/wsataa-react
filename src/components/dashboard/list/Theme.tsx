@@ -24,6 +24,19 @@ export const PaginationContainer = styled.div`
 `;
 
 export const WrapperForm = styled.div`
-  margin-top: 15px;
-  width: 45%;
+  height: 500px;
+  display:flex;
+  align-items:center;
+  && div{
+    border: none;
+    box-shadow:none;
+  }
+`;
+export const ButtonWrapper = styled.div`
+  display:flex;
+  justify-content:end;
+  && button{
+    background-color:#4BBF7A;
+    color: white;
+  }
 `;

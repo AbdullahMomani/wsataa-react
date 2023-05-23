@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DashaoardContainer, Sider, Content, LogoContainer } from "./Theme";
+import { DashaoardContainer, Sider, Content, LogoContainer, WrapperForm } from "./Theme";
 import {
   Drawer,
   List,
@@ -23,12 +23,33 @@ import { store } from "../../redux/store";
 import { HttpsHandler } from "../../sharedComponents/httpHandler";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Logo from "../../sharedComponents/assets/wesataa-logo.png";
+import { BasicModal, Form } from "../../sharedComponents";
+import useModal from "../../hooks/useModal";
+import { SUCCESS_STATUS } from "../../constants";
+
+
+const formData = {
+  row: {
+    row1: [
+      {
+        tag: "input",
+        type: "text",
+        name: "city",
+        label: "City",
+      },
+    ],
+  },
+};
+
+
 
 export const Dashboard = () => {
+  const [result, getResult] = useState<any>({});
   const [currentPage, setCurrentPage] = useState(1);
   const { id } = useParams<{ id: string }>();
   const [selectedItem, setSelectedItem] = useState<string | undefined>(id);
   const navigate = useNavigate();
+  const [open, handleOpen, handleClose] = useModal();
   const dispatch = useDispatch<any>();
   const { signInInfo } = useSelector<any>((state) => {
     return {
@@ -75,8 +96,22 @@ export const Dashboard = () => {
       deleteError: state?.cities.error,
     };
   }) as any;
-  console.log("deleteEntities",deleteEntities);
-  
+  useEffect(() => {
+    if (Object.values(result)?.length > 0) {
+      (async () => {
+        const { payload } = await dispatch(
+          citiesAPI.addCity()({ name: result?.city })
+        );
+        if (SUCCESS_STATUS.includes(payload?.status)) {
+          dispatch(
+            citiesAPI.getCitiesList()({
+              urlParams: `?page=${currentPage}&perPage=10&name=`,
+            })
+          );
+        }
+      })();
+    }
+  }, [result]);
   useEffect(() => {
     if (signInInfo) {
       if (selectedItem == "1") {
@@ -165,10 +200,23 @@ export const Dashboard = () => {
         />
       </Sider>
       <Content>
+      {selectedItem == "4" && (
+          <BasicModal open={open} handleClose={handleClose}>
+            <WrapperForm>
+              <Form
+                autoComplete="off"
+                getResult={getResult}
+                formData={formData}
+                title={"Add City"}
+              />
+            </WrapperForm>
+          </BasicModal>
+        )}
         <HttpsHandler loading={loading} entities={entities} error={error}>
           <>
             <AllListItems
               data={entities}
+              openCitiesModal={handleOpen}
               title={
                 selectedItem == "1"
                   ? "Users"
