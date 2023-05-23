@@ -1,41 +1,47 @@
 import React from "react";
+import { UnOrderedList } from "./Theme";
 
 export const ModalContent = ({ entities, type }: any) => {
   return (
     <div>
       <h2>Details</h2>
       {type && (
-        <ul>
+        <UnOrderedList>
+          <div>
           <li>type: {entities?.type}</li>
           <li>name: {entities?.name}</li>
           <li>Description: {entities?.adDescription}</li>
-          {type == "offer" && <li>Guess Price: {entities?.guessPrice}</li>}
-          {type == "offer" && <li>Limit Price: {entities?.limitPrice}</li>}
+          {type == "Offer" && <li>Guess Price: {entities?.guessPrice}</li>}
+          {type == "Offer" && <li>Limit Price: {entities?.limitPrice}</li>}
           <li>City: {entities?.location?.city}</li>
           <li>
-            Offer {type} name:{" "}
+            {type} owner name:{" "}
             {entities?.offerOwner?.name || entities?.orderOwner?.name}
           </li>
           <li>
-            Offer {type} gender:{" "}
+            {type} owner gender:{" "}
             {entities?.offerOwner?.gender || entities?.orderOwner?.gender}
           </li>
+          </div>
+          <div>
           <li>
-            Offer {type} email:{" "}
+            {type} owner email:{" "}
             {entities?.offerOwner?.email || entities?.orderOwner?.email}
           </li>
           <li>
-            Offer {type} address:{" "}
+            {type} owner address:{" "}
             {entities?.offerOwner?.address || entities?.orderOwner?.address}
           </li>
           <li>
-            Offer {type} phone:{" "}
+            {type} owner phone:{" "}
             {entities?.offerOwner?.phone || entities?.orderOwner?.phone}
           </li>
           <li>Special Info: {entities?.specialInfo}</li>
           <li>isActive: {JSON.stringify(entities?.isActive)}</li>
           <li>isDeleted Info: {JSON.stringify(entities?.isDeleted)}</li>
-        </ul>
+          </div>
+      
+        </UnOrderedList>
       )}
     </div>
   );
